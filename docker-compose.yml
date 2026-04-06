@@ -1,0 +1,13 @@
+services:
+  openpencil:
+    image: ghcr.io/zseven-w/openpencil:latest
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate --url http://openpencil:3000
+    depends_on:
+      - openpencil
+    restart: unless-stopped
