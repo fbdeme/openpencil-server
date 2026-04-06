@@ -3,9 +3,9 @@
 ## 미완료
 
 ### 문서 업데이트
-- [ ] `README.md`를 Cloudflare Tunnel 기준으로 재작성
-- [ ] `.env.example`에서 ngrok 관련 내용 제거 또는 Cloudflare 옵션 추가
-- [ ] `CLAUDE.md` Architecture 섹션 Cloudflare 반영
+- [x] `README.md`를 Cloudflare Tunnel 기준으로 재작성
+- [x] `.env.example`에서 ngrok 관련 내용 제거 → Cloudflare 옵션으로 변경
+- [x] `CLAUDE.md` Architecture 섹션 Cloudflare 반영
 
 ### 인프라
 - [ ] Cloudflare 계정 + 도메인 연결 시 Named Tunnel로 전환 (고정 URL)

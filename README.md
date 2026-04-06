@@ -1,6 +1,6 @@
 # OpenPencil 팀 협업 서버
 
-OpenPencil 디자인 에디터를 Docker + ngrok으로 띄워서, 팀원들이 웹 브라우저로 접속해 디자인 협업하고, 각자 Claude Code MCP로 .fig 파일을 조작할 수 있는 환경입니다.
+OpenPencil 디자인 에디터를 Docker + Cloudflare Tunnel로 띄워서, 팀원들이 웹 브라우저로 접속해 디자인 협업하고, 각자 Claude Code MCP로 .fig 파일을 조작할 수 있는 환경입니다.
 
 ## 서버 세팅 (관리자)
 
@@ -11,35 +11,25 @@ docker --version
 docker compose version
 ```
 
-### 2. OpenPencil 실행
+### 2. OpenPencil + Cloudflare Tunnel 실행
 
 ```bash
 docker compose up -d
 ```
 
-`http://localhost:3000`으로 접속되는지 확인합니다.
+OpenPencil과 Cloudflare Tunnel이 함께 실행됩니다.
 
-### 3. ngrok 설치 및 설정
-
-1. [ngrok 다운로드](https://ngrok.com/download)에서 설치
-2. [ngrok 가입](https://dashboard.ngrok.com/signup) (무료)
-3. authtoken 설정:
+### 3. 터널 URL 확인
 
 ```bash
-ngrok config add-authtoken <your-token>
+docker compose logs tunnel | grep trycloudflare.com
 ```
 
-### 4. 터널 실행
+출력에서 `https://xxxx.trycloudflare.com` URL을 찾아 팀원에게 공유합니다.
 
-```bash
-ngrok http 3000
-```
+> **참고:** Quick Tunnel은 컨테이너 재시작 시 URL이 변경됩니다. 고정 URL이 필요하면 Cloudflare 계정 + 도메인으로 Named Tunnel을 설정하세요.
 
-터미널에 표시되는 `https://xxxx.ngrok-free.app` URL을 팀원에게 공유합니다.
-
-> **주의:** 무료 플랜은 ngrok을 재시작할 때마다 URL이 변경됩니다.
-
-### 5. 서버 종료
+### 4. 서버 종료
 
 ```bash
 docker compose down
@@ -47,7 +37,7 @@ docker compose down
 
 ## 팀원 접속
 
-1. 관리자에게 공유받은 URL(`https://xxxx.ngrok-free.app`)을 브라우저에서 접속
+1. 관리자에게 공유받은 URL(`https://xxxx.trycloudflare.com`)을 브라우저에서 접속
 2. OpenPencil 에디터에서 디자인 작업 시작
 
 ## Claude Code MCP 연동 (각 개발자)
@@ -78,4 +68,4 @@ claude mcp add --transport stdio open-pencil -- openpencil-mcp
 
 - [OpenPencil GitHub](https://github.com/ZSeven-W/openpencil)
 - [OpenPencil MCP 문서](https://openpencil.dev/programmable/mcp-server)
-- [ngrok](https://ngrok.com)
+- [Cloudflare Tunnel 문서](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps)

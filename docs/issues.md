@@ -16,13 +16,8 @@
 - **영향:** 기능에는 영향 없음, QUIC 성능이 약간 저하될 수 있음
 - **해결 방안:** 호스트에서 `sudo sysctl -w net.core.rmem_max=7500000` 실행
 
-### 3. README.md가 ngrok 기준으로 작성됨
-- **심각도:** 중간
-- **설명:** 터널을 Cloudflare로 전환했으나 README는 아직 ngrok 가이드
-- **영향:** 팀원이 문서를 따라하면 혼란 발생
-- **해결 방안:** README.md를 Cloudflare 기준으로 업데이트 필요
-
 ## 해결됨
 
+- ~~README.md가 ngrok 기준으로 작성됨~~ → 2026-04-06 Cloudflare 기준으로 업데이트 완료
 - ~~Docker 미설치~~ → 2026-04-06 설치 완료
 - ~~sudo 권한 없음~~ → 사용자가 직접 설치로 해결
