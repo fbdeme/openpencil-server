@@ -3,6 +3,8 @@ services:
     image: openpencil-custom:latest
     ports:
       - "3000:3000"
+    volumes:
+      - claude-data:/root/.claude
     restart: unless-stopped
 
   tunnel:
@@ -11,3 +13,6 @@ services:
     depends_on:
       - openpencil
     restart: unless-stopped
+
+volumes:
+  claude-data:

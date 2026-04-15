@@ -21,8 +21,10 @@
 - [x] 이미지 충실 재현 커스텀 스킬 추가 (`packages/pen-ai-skills/skills/`)
 - [x] Docker 이미지 리빌드 (`openpencil-custom:latest`)
 - [x] `docker-compose.yml`을 커스텀 이미지로 교체
-- [ ] 커스텀 스킬 동작 테스트 (이미지 재현 모드)
-- [ ] 컨테이너 내 `claude /login` 재실행 필요 (이미지 교체로 인증 초기화됨)
+- [x] 커스텀 스킬 동작 테스트 → 스킬은 빌드에 포함되나 Agent SDK 경로에서 무시됨
+- [x] 컨테이너 내 `claude /login` 완료, 볼륨 마운트로 영구 유지
+- [ ] OpenPencil AI 파이프라인 소스 분석 (generate.ts, chat.ts, Agent SDK 시스템 프롬프트)
+- [ ] 이미지 첨부 시 웹 디자인 변환 문제 근본 해결
 
 ### OpenPencil (기타)
 - [ ] `@open-pencil/mcp` 설치 및 연동 테스트
