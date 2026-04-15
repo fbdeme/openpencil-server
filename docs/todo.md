@@ -16,7 +16,15 @@
 - [ ] `README.md`에 Figma MCP 워크플로우 추가
 - [ ] `CLAUDE.md` Architecture에 Figma 반영
 
-### OpenPencil (보조)
+### OpenPencil 커스텀 빌드
+- [x] OpenPencil 소스 포크 (fbdeme/openpencil)
+- [x] 이미지 충실 재현 커스텀 스킬 추가 (`packages/pen-ai-skills/skills/`)
+- [x] Docker 이미지 리빌드 (`openpencil-custom:latest`)
+- [x] `docker-compose.yml`을 커스텀 이미지로 교체
+- [ ] 커스텀 스킬 동작 테스트 (이미지 재현 모드)
+- [ ] 컨테이너 내 `claude /login` 재실행 필요 (이미지 교체로 인증 초기화됨)
+
+### OpenPencil (기타)
 - [ ] `@open-pencil/mcp` 설치 및 연동 테스트
 - [ ] Cloudflare 계정 + 도메인 연결 시 Named Tunnel로 전환 (고정 URL)
 

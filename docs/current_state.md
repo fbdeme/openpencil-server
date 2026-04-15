@@ -20,6 +20,9 @@ OpenPencil은 실시간 멀티유저 협업을 지원하지 않음이 확인됨 
 | 터널 URL | 활성 | `https://cartridges-bare-fold-modem.trycloudflare.com` (재시작 시 변경됨) |
 | OpenPencil AI Agent | 동작 확인 | 컨테이너 내 `claude /login` 완료 |
 | Figma MCP 연동 | 미착수 | 다음 작업으로 예정 |
+| OpenPencil 커스텀 빌드 | 완료 | `openpencil-custom:latest`, 이미지 재현 스킬 포함 |
+| 터널 URL (신규) | 활성 | `https://operate-seattle-recorder-silk.trycloudflare.com` |
+| 컨테이너 내 Claude 로그인 | 필요 | 이미지 교체로 인증 초기화됨 |
 
 ## 파일 현황
 

@@ -44,4 +44,20 @@
 - 실시간 협업이 핵심 요구사항이므로 Figma로 메인 도구 전환
 - 각 팀원이 로컬 Claude Code + Figma MCP로 Figma 디자인 AI 조작
 - OpenPencil은 보조 도구(AI Agent, 오프라인 작업)로 유지
-- 다음 작업(2026-04-07)에서 Figma MCP 세팅 예정
+
+### AI Agent 동작 분석 및 커스텀 스킬 조사
+- 이미지를 주면 웹사이트로 변환하는 이유 분석: AI 시스템 프롬프트가 UI/웹 디자인 전용
+- 주요 역할: "frontend designer", "design assistant", "design system architect" 등
+- `design.md` (Design System 패널): 스타일 제약만 변경 가능, 동작 방식 변경 불가
+- 스킬 파일: AI의 사고/행동 방식 자체를 변경 가능하나 소스 리빌드 필요
+
+### OpenPencil 스킬 구조 파악
+- 소스 클론하여 `packages/pen-ai-skills/skills/` 구조 확인
+- 스킬 = YAML 프론트매터 + 마크다운 프롬프트 (.md 파일)
+- 카테고리: domains, knowledge, phases (planning/generation/validation/maintenance), style-guides
+- 빌드 파이프라인: .md → vite-plugin-skills.ts → _generated/skill-registry.ts
+- Docker 이미지에는 빌드 결과물만 포함, 런타임 스킬 추가 불가
+
+### OpenPencil 소스 포크 및 커스텀 빌드 착수
+- 목표: 이미지 충실 재현 스킬 추가 + Docker 이미지 리빌드
+- 포크 → 스킬 .md 추가 → Docker 빌드 → docker-compose.yml 교체
